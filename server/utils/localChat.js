@@ -23,7 +23,7 @@ class LocalChat {
         this.io.to(body.uik).emit('chatMessage', body);
     }
     onMessageTg = (body) =>{
-        this.io.to(body.uik).emit('chatMessage', body);
+        this.io.to(body.uik.toString()).emit('chatMessage', body);
         const message = encodeURIComponent(`${body.user.username}: ${body.message}`)
         axios.post(`https://api.telegram.org/bot1958915532:AAHjWe_9SY2GXzEllJeKjtTO6t5y2ojfjJw/sendMessage?chat_id=-${body.telegram_id}&text=${message}`)
     }
