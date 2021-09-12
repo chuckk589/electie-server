@@ -1,10 +1,11 @@
   
 const express = require('express');
-const userController = require('../controllers/uik.controller');
+const uikController = require('../controllers/uik.controller');
 
 const router = express.Router();
 
-router.get('/', userController.getUiks)
+router.get('/', uikController.getUiks)
+router.put('/violation', uikController.registerViolation)
 // router.delete('/:id', userController.deleteUser)
 // router.post('/', userController.newUser)
 // router.post('/:id/support', userController.newTicket)

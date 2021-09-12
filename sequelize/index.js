@@ -33,7 +33,10 @@ const sequelize = new Sequelize(process.argv.includes('-prod') ? options.prod : 
 
 const modelDefiners = [
 	require('./models/user.model'),
+	require('./models/uik.model'),
 	require('./models/chat.model'),
+	require('./models/uik.member.model'),
+	require('./models/config.model'),
 ];
 
 // We define all models according to their files.

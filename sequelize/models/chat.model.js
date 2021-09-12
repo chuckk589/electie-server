@@ -14,10 +14,6 @@ module.exports = (sequelize) => {
 			type: DataTypes.INTEGER,
 			unique: true
 		},
-		uik_id:{
-			type: DataTypes.INTEGER,
-			unique: true
-		},
 		inviteLink:{
 			type: DataTypes.STRING
 		},

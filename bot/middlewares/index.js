@@ -1,1 +1,0 @@
-exports.stepsCounter = require("./stepsCounter");

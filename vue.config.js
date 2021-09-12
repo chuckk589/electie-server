@@ -23,11 +23,11 @@ module.exports = {
   devServer: {
     proxy: {
       '^/':{
-        target:'http://localhost:777'
+        target:'http://localhost:778'
       },
       
     }
   },
-  // outputDir: "./files/dist",
-  publicPath: '/dist'
+  // outputDir: "./dist",
+  // publicPath: '/dist'
 }
