@@ -27,7 +27,7 @@ async function assertDatabaseConnectionOk() {
 		// 	console.log(e)
 		// })
 		//chatAssignment.sync({ force: true })
-		await sequelize.sync({force:true})
+		//await sequelize.sync({force:true})
 		console.log('Database connection OK!');
 	} catch (error) {
 		console.log('Unable to connect to the database:');
