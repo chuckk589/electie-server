@@ -20,10 +20,10 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 		},
 		phone:{
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 		},
 		watcher_phone:{
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 		},
 		exp:{
 			type: DataTypes.STRING
