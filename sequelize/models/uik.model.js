@@ -20,20 +20,28 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 		},
 		phone:{
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 		},
-		vote_phone:{
-			type: DataTypes.STRING,
+		watcher_phone:{
+			type: DataTypes.INTEGER,
 		},
 		exp:{
 			type: DataTypes.STRING
 		},
+		stream_url_1:{
+			type: DataTypes.STRING
+		},
+		stream_url_2:{
+			type: DataTypes.STRING
+		},
 		uik_id:{
-			type: DataTypes.INTEGER
+			type: DataTypes.INTEGER,
+			unique:true
 		},
 		vk_album_id:{
 			type: DataTypes.INTEGER
 		}
+		
 	},
 	{ timestamps: false });
 };

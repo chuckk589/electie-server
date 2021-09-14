@@ -28,6 +28,6 @@ module.exports = {
       
     }
   },
-  // outputDir: "./dist",
-  // publicPath: '/dist'
+  outputDir: "./dist",
+  publicPath: '/dist'
 }

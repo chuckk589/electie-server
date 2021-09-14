@@ -3,11 +3,13 @@ const path = require('path');
 const cors = require('cors')
 const sequelize = require('../sequelize');
 const fileUpload = require('express-fileupload');
-//const passport = require('passport');
 const routes = require('./routes/');
+
+
 const LocalChat = require('./utils/localChat');
-// const AuthMiddleWare = require('./middleware/custom').isAuthenticated
-// require('./middleware/passport')
+const parser = require('./utils/uikParser')
+const vk = require('./utils/vk')
+
 
 const app = express();
 const port = 778;
@@ -16,8 +18,15 @@ async function assertDatabaseConnectionOk() {
 	console.log(`Checking database connection...`);
 	try {
 		await sequelize.authenticate();
-		let {config} = sequelize.models;
-		//config.sync({ force: true })
+		//vk.syncAlbums()
+		//let {chatAssignment} = sequelize.models;
+		
+		// parser().then(e=>{
+		// 	console.log(e)
+		// }).catch(e=>{
+		// 	console.log(e)
+		// })
+		//chatAssignment.sync({ force: true })
 		//await sequelize.sync({force:true})
 		console.log('Database connection OK!');
 	} catch (error) {
@@ -51,7 +60,6 @@ async function init() {
 	});
 	const server = app.listen(port, () => console.log(`Listening on port ${port}..`));
 	LocalChat.init(server)
-	
 }
 
 init();

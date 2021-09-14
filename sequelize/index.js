@@ -7,7 +7,7 @@ const options = {
 		dialect: 'mysql',
 		logQueryParameters: true,
 		//benchmark: true,
-		logging: true,
+		logging: false,
 		username:'mysql',
 		password:"mysql",
 		database: "electie"

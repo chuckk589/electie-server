@@ -18,9 +18,9 @@ exports.getPass = async (ctx) => {
                 chat_id:ctx.update.message.from.id
             }
         })
-        ctx.reply('you are now admin')
+        ctx.reply('Вам выданы права администратора')
         ctx.scene.leave()
     }else{
-        ctx.reply('incorrect passowrd')
+        ctx.reply('Неверный пароль')
     }
 }
