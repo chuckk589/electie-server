@@ -1,14 +1,13 @@
   
 const express = require('express');
-const uikController = require('../controllers/uik.controller');
+const memberController = require('../controllers/member.controller');
 
 const router = express.Router();
 
-router.get('/', uikController.getUiks)
-router.put('/violation', uikController.registerViolation)
+router.get('/', memberController.get)
 // router.delete('/:id', userController.deleteUser)
 // router.post('/', userController.newUser)
 // router.post('/:id/support', userController.newTicket)
-router.put('/', uikController.updateUik)
+router.put('/', memberController.put)
 
 module.exports = router;

@@ -1,26 +1,8 @@
 const sequelize = require('../../sequelize');
 const { Op } = require("sequelize");
-let {user, config} = sequelize.models;
-
-
-// async function googleInit(cb){
-//   const conf = await config.findAll({where:{
-//     name:{
-//       [Op.or]: ['google_api_client_id','google_api_client_secret','google_api_callback_ip']
-//     }
-//   }})
-//   const secret = conf.find(e=>e.name == 'google_api_client_secret').value
-//   const client_id = conf.find(e=>e.name == 'google_api_client_id').value
-//   const host = conf.find(e=>e.name == 'google_api_callback_ip').value
-//   cb(null, new google.auth.OAuth2(client_id,secret,`${host}/v1/config/oauthcallback`));
-// }
-// {
-//   access_token: 'ya29.a0ARrdaM_vgiN-4Lme3isoFSBKJvp2BzmbWFCC6UxQr_7Y6f2k3AbiScrsSD3sCK_-0hfgdaJDjjAcjLhIc0-kkwg5dbH6jWHc4GeiDWfIS_YBWjSx7X9GL-pnzKSZ-1I3AkZRWSOyXyOAkDsgSmvO6CHdepli',
-//   refresh_token: '1//0chtTZqDWST3lCgYIARAAGAwSNwF-L9IrbxxboN1XI7rXDuamj6eBkBNCsb80j_2PeNDErosK9r7ejxUzk-fzMzc7h7LTvdCkQmU',
-//   scope: 'https://www.googleapis.com/auth/youtube.upload',
-//   token_type: 'Bearer',
-//   expiry_date: 1630693870431
-// }
+const LocalChat = require('../utils/localChat');
+const vk = require('../utils/vk')
+let {user, config, uik, chat} = sequelize.models;
 
 module.exports.applyConfig = async function applyConfig(req, res, next) {
   //temp
@@ -42,4 +24,35 @@ module.exports.setConfigs = async function setConfigs(req, res, next) {
   })
   .then(e=>res.send({status:true}))
   .catch(e=>res.send(e))
+};
+
+//utils
+module.exports.utilities = async function utilities(req, res, next) {
+  //vk group status
+  const uiks = await uik.findAll()
+  const notAssigned = uiks.filter(u=>u.vk_album_id === 0)
+  const vkGroupStatus = {
+    uiks: uiks.length,
+    notAssigned: notAssigned.length
+  }
+  //telegram chats
+  const chats = await chat.findAll()
+  const tgChatsStatus = {
+    //uiks.length should be equal chats.length
+    chats: uiks.length,
+    notAssigned: uiks.length - chats.length
+  }
+  res.send({status:true, data:{
+    vkGroupStatus:vkGroupStatus,
+    tgChatsStatus:tgChatsStatus
+  }})
+};
+module.exports.genChats = async function genChats(req, res, next) {
+  LocalChat.syncChats()
+  res.send('done')
+};
+
+module.exports.genGroups = async function genGroups(req, res, next) {
+  vk.syncAlbums()
+  res.send('done')
 };

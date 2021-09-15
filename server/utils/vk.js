@@ -28,6 +28,7 @@ class VK {
                 this.sleep(500)//vk limits 5/s
             }
         }
+        console.log(`VK:syncAlbums all albums exist`)
     }
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));

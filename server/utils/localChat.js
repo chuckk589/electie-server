@@ -24,7 +24,13 @@ class LocalChat {
     }
     newChatAssignment = async (id) =>{
         const chats = await chat.findAll({
-            include: [user,uik]
+            include: [{
+                model:user,
+                required:false,
+                where:{
+                    watchType:'web'
+                }
+            },uik]
         })
         const emptiestChat = chats.sort((a,b)=>{
             return a.users.length - b.users.length

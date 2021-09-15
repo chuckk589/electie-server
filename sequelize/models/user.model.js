@@ -21,6 +21,11 @@ module.exports = (sequelize) => {
 			type: DataTypes.INTEGER,
 			defaultValue: 0
 		},
+		watchType:{
+			type: DataTypes.ENUM,
+			values: ['live', 'web','none'],
+			defaultValue: 'web'
+		},
 		chat_id:{
 			type: DataTypes.INTEGER,
 			unique: true

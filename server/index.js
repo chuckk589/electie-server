@@ -19,14 +19,14 @@ async function assertDatabaseConnectionOk() {
 	try {
 		await sequelize.authenticate();
 		//vk.syncAlbums()
-		//let {chatAssignment} = sequelize.models;
+		//let {user} = sequelize.models;
 		
 		// parser().then(e=>{
 		// 	console.log(e)
 		// }).catch(e=>{
 		// 	console.log(e)
 		// })
-		//chatAssignment.sync({ force: true })
+		//user.sync()
 		//await sequelize.sync({force:true})
 		console.log('Database connection OK!');
 	} catch (error) {

@@ -15,3 +15,17 @@ module.exports.registerViolation = async function registerViolation(req, res, ne
   LocalChat.onMessageTg({message:`Зарегистрировано нарушение - ${req.body.vidLink}`, ...req.body})
   res.send({status:true})
 };
+module.exports.updateUik = async function updateUik(req, res, next) {
+  if(req.body){
+      let {chat,uik_members ,chats,...rest} = req.body
+      uik.update(rest,{
+          where:{
+              id:rest.id
+          }
+      }).then(r=>{
+          res.send('done')
+      }).catch(r=>{
+          res.send('something went wrong')
+      })
+  }
+};
