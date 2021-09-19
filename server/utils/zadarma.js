@@ -37,6 +37,7 @@ class Zadarma {
                 if(r.numbers){
                     for (const numb of r.numbers) {
                         const response = await this.api({api_method: `/v1/pbx/internal/${numb}/status/`})
+                        console.log(response)
                         if(response.is_online === 'false'){
                             return res({pbx_id:response.pbx_id, number:numb})
                         }
